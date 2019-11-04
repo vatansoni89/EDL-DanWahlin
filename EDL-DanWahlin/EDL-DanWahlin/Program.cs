@@ -14,9 +14,14 @@ namespace EDL_DanWahlin
             //del1 += WorkPerformed2;
 
             del1(1, WorkType.Golf);
-            del2(2, WorkType.GenerateReports);
+            DoWork(del2);
 
             Console.Read();
+        }
+
+        public static void DoWork(WorkPerformedhandler del)
+        {
+            del(5, WorkType.GoToMeetings);
         }
 
         public static void WorkPerformed1(int h, WorkType w)
