@@ -11,10 +11,11 @@ namespace EDL_DanWahlin
 
             WorkPerformedhandler del1 = new WorkPerformedhandler(WorkPerformed1);
             WorkPerformedhandler del2 = new WorkPerformedhandler(WorkPerformed2);
-            //del1 += WorkPerformed2;
+            WorkPerformedhandler del3 = new WorkPerformedhandler(WorkPerformed3);
 
-            del1(1, WorkType.Golf);
-            DoWork(del2);
+            del1 += del2 + del3;
+
+            del1(10, WorkType.GenerateReports);
 
             Console.Read();
         }
@@ -31,6 +32,10 @@ namespace EDL_DanWahlin
         public static void WorkPerformed2(int h, WorkType w)
         {
             Console.WriteLine("WorkPerformed 2 called..." + h.ToString());
+        }
+        public static void WorkPerformed3(int h, WorkType w)
+        {
+            Console.WriteLine("WorkPerformed 3 called..." + h.ToString());
         }
     }
 
