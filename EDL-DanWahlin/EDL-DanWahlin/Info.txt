@@ -15,3 +15,7 @@ public event EventHandler<WorkPerformedEventAgrs> WorkPerformed;
 
 += Operator:
   Its used to attach an event to an event handler
+
+Delegate Inference:
+  While attaching event to an event handler compiler can figureout which delegate object need to be created from events signature.
+  So we can directly attach event to an event handler (worker.WorkPerformed += Worker_WorkPerformed;)

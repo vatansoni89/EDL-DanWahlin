@@ -11,13 +11,13 @@ namespace EDL_DanWahlin
             var worker = new Worker();
 
             // It also works: worker.WorkPerformed += worker_WorkPerformed;
-            worker.WorkPerformed += new EventHandler<WorkPerformedEventAgrs>(Worker_WorkPerformed);
+            worker.WorkPerformed += Worker_WorkPerformed;
             worker.WorkCompleted += Worker_WorkCompleted;
             worker.DoWork(5, WorkType.GenerateReports);
             Console.Read();
         }
 
-        public static void Worker_WorkPerformed(Object sender, WorkPerformedEventAgrs e)
+        private static void Worker_WorkPerformed(object sender, WorkPerformedEventAgrs e)
         {
             Console.WriteLine($"Work type is: {e.WorkType} and hours worked: {e.Hours} and sender type is {sender.GetType()}");
         }
