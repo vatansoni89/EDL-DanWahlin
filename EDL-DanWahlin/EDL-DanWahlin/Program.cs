@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection.Metadata.Ecma335;
 
 namespace EDL_DanWahlin
 {
@@ -7,42 +8,24 @@ namespace EDL_DanWahlin
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Hello World!");
-
-            //WorkPerformedhandler del1 = new WorkPerformedhandler(WorkPerformed1);
-            //WorkPerformedhandler del2 = new WorkPerformedhandler(WorkPerformed2);
-            //WorkPerformedhandler del3 = new WorkPerformedhandler(WorkPerformed3);
-
-            //del1 += del2 + del3;
-
-            ////del1(10, WorkType.GenerateReports);
-
-            //Console.WriteLine("final value is " + del1(10, WorkType.GenerateReports));
-
             var worker = new Worker();
+
+            // It also works: worker.WorkPerformed += worker_WorkPerformed;
+            worker.WorkPerformed += new EventHandler<WorkPerformedEventAgrs>(Worker_WorkPerformed);
+            worker.WorkCompleted += Worker_WorkCompleted;
+            worker.DoWork(5, WorkType.GenerateReports);
             Console.Read();
         }
 
-        //public static void DoWork(WorkPerformedhandler del)
-        //{
-        //    del(5, WorkType.GoToMeetings);
-        //}
+        public static void Worker_WorkPerformed(Object sender, WorkPerformedEventAgrs e)
+        {
+            Console.WriteLine($"Work type is: {e.WorkType} and hours worked: {e.Hours} and sender type is {sender.GetType()}");
+        }
 
-        //public static int WorkPerformed1(int h, WorkType w)
-        //{
-        //    Console.WriteLine("WorkPerformed 1 called..."+h.ToString());
-        //    return h + 1;
-        //}
-        //public static int WorkPerformed2(int h, WorkType w)
-        //{
-        //    Console.WriteLine("WorkPerformed 2 called..." + h.ToString());
-        //    return h + 2;
-        //}
-        //public static int WorkPerformed3(int h, WorkType w)
-        //{
-        //    Console.WriteLine("WorkPerformed 3 called..." + h.ToString());
-        //    return h + 3;
-        //}
+        public static void Worker_WorkCompleted(Object sender, EventArgs e)
+        {
+            Console.WriteLine($"Worker is done sender type is {sender.GetType()}");
+        }
     }
 
     public enum WorkType
