@@ -7,4 +7,8 @@ Delegate: public delegate int WorkPerformedhandler(int hours, WorkType workType)
   Event: public event WorkPerformedhandler WorkPerformed;
     Function: protected virtual void OnWorkPerformed(int hours, WorkTYpe workType){...}
 
-
+public delegate void EventHandler<TEventArgs>(object sender, TEventArgs e);
+  public event EventHandler<WorkPerformedEventAgrs> WorkPerformed;
+  
+public event EventHandler<WorkPerformedEventAgrs> WorkPerformed;
+  public delegate int WorkPerformedhandler(Object sender, WorkPerformedEventAgrs e);

@@ -4,10 +4,12 @@ using System.Text;
 
 namespace EDL_DanWahlin
 {
-    public delegate int WorkPerformedhandler(int hours, WorkType workType);
+    //public delegate int WorkPerformedhandler(Object sender, WorkPerformedEventAgrs e);
+
     public class Worker
     {
-        public event WorkPerformedhandler WorkPerformed;
+        //Behind the seen this will generate delegate: public delegate int WorkPerformedhandler(Object sender, WorkPerformedEventAgrs e);
+        public event EventHandler<WorkPerformedEventAgrs> WorkPerformed;
         public event EventHandler WorkCompleted;
 
         public void DoWork(int hours, WorkType workType)
@@ -26,10 +28,10 @@ namespace EDL_DanWahlin
             //    WorkPerformed(hours, workType);
             //}
 
-            WorkPerformedhandler del = WorkPerformed as WorkPerformedhandler;
+            EventHandler<WorkPerformedEventAgrs> del = WorkPerformed as EventHandler<WorkPerformedEventAgrs>;
             if (del!=null)
             {
-                del(hours, workType);
+                del(this, new WorkPerformedEventAgrs(hours, workType));
             }
         }
 
