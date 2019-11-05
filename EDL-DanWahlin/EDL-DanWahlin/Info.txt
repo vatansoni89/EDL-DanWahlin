@@ -1,0 +1,10 @@
+﻿Naming Convention:
+  Delegates: Suffix with 'Handler' (WorkPerformedHandler)
+    Events: Suffix with 2nd form (WorkPerformed, WorkCompleted)
+      Function: Prefix 'On' and Suffix Event (OnWorkPerformed)
+
+Delegate: public delegate int WorkPerformedhandler(int hours, WorkType workType);
+  Event: public event WorkPerformedhandler WorkPerformed;
+    Function: protected virtual void OnWorkPerformed(int hours, WorkTYpe workType){...}
+
+
