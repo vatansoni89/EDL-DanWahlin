@@ -10,5 +10,10 @@ namespace EDL_DanWahlin
         {
           Console.WriteLine(op(x, y));  
         }
+
+        public void ShowMsz(int x, int y, Action<int, int> ac)
+        {
+            ac(x, y);
+        }
     }
 }

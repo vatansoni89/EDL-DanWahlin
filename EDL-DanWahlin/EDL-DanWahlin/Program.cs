@@ -9,6 +9,12 @@ namespace EDL_DanWahlin
         
         static void Main(string[] args)
         {
+            Action<int , int > ActionDelAdd = (x, y) => Console.WriteLine($"Add issss: {x+y}");
+            Action<int, int> ActionDelMult = (x, y) => Console.WriteLine($"Mult issss: {x * y}");
+            MathOperations mo1 = new MathOperations();
+            mo1.ShowMsz(5,5, ActionDelAdd);
+            mo1.ShowMsz(5, 5, ActionDelMult);
+
             DelMathOperations add = (a, b) => a + b;
             DelMathOperations mult = (a, b) => a * b;
 

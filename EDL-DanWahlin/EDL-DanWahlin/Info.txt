@@ -25,3 +25,6 @@ Lambdas, Action<T> and Func<T, TResult>:
 
 Next=> Demo: Lambda with custom delegates:
   
+Delegates:
+  Action<T>: Accept singlepara. but don't return anything.
+  Func<T, TResult>: Accept single para and return value of type TResult
