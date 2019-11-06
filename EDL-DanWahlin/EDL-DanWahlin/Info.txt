@@ -22,3 +22,6 @@ Delegate Inference:
 
 Lambdas, Action<T> and Func<T, TResult>:
   
+
+Next=> Demo: Lambda with custom delegates:
+  
