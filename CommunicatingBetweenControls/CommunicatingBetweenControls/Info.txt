@@ -1,0 +1,10 @@
+﻿Mediator Pattern:
+  - Its used to create a loosly coupled system.
+  - We define a class (component) here which have event and OnEvent(objsendr, eventargs) method.
+    A component who wants to inform other componet with input (EventArgs) will call OnEvent(..) method
+    and pass the input, Other component subscribe the event and use the input thrown by main component.
+
+
+Jobs: Dropdown changes here pass the job object to OnEvent(..) method
+  EmployeesOnJob: Subscribe the event and use the input
+  JobDetails: Subscribe the event and use the input
