@@ -13,6 +13,7 @@ namespace ThreadsAndDelegates
 {
     public partial class AsyncBad : Form
     {
+        delegate void UpdateProgressDelegate(int val);
 
         public AsyncBad()
         {
@@ -26,7 +27,11 @@ namespace ThreadsAndDelegates
 
         private void StartButton_Click(object sender, EventArgs e)
         {
+            UpdateProgressDelegate del = new UpdateProgressDelegate(StartProcess);
 
+            // BeginInvoke(...): creates separate thread for executing the delegate.
+            del.BeginInvoke(10,null,null);
+            MessageBox.Show("done bad!!");
         }
 
         //Called Asynchronously

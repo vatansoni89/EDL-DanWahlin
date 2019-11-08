@@ -1,0 +1,5 @@
+Async-Delegate-Bad:
+  - BeginInvoke(...): creates separate thread for executing the delegate.
+  - Secondary thread (created by BeginInvoke) must never touch the gui thread. (textbox etc)
+
+Main thread is gui thread in Debug>Windows>Thread.

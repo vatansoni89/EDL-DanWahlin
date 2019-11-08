@@ -27,8 +27,7 @@ namespace ThreadsAndDelegates
             StartButton.Enabled = false;
             CancelButton.Enabled = true;
             OutputLabel.Text = "";
-
-
+            MyBackgrdWorker.RunWorkerAsync();
         }
 
 
@@ -52,10 +51,33 @@ namespace ThreadsAndDelegates
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-
+            MyBackgrdWorker.CancelAsync();
             CancelButton.Enabled = false;
         }
 
+        private void MyBackgrdWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            //Not on UI thread.
+            e.Result = Calculate(sender as BackgroundWorker, e);
+        }
 
+        private void MyBackgrdWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar1.Value = e.ProgressPercentage;
+        }
+
+        private void MyBackgrdWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            StartButton.Enabled = true;
+            progressBar1.Value = 0;
+            if (!e.Cancelled)
+            {
+                OutputLabel.Text = "Backgrdworker completed";
+            }
+            else
+            {
+                OutputLabel.Text = "Cancelled!";
+            }
+        }
     }
 }
