@@ -1,0 +1,59 @@
+Danwahlin:
+  Roles:
+    Introduction:
+      Event (Raiser)---> (Delegate,EventArgs)---> Event Handler
+    The role of events:
+      Events are notifications.
+      Provide a way to trigger notifications frm end users or from objects.
+      Events pass EventArgs.
+    The role of delegates:
+      Its a function pointer.
+    The role of event handlers:
+      Receives data from  delegate and process.
+      Normally have 2 parameters:
+        Sender
+        EventArgs
+      Example:
+        btnSubmit_Click(object sender, EventArgs e)
+  Creation:
+    1. Introduction:
+      Event (Raiser)---> (Delegate,EventArgs)---> Event Handler
+      Creating a Delegate
+      Defining an Event
+      Raising Events
+      Creating an EventArgs Class
+    2. Creating Delegate:
+      Custom delegates are defined using 'delegate' keyword.
+      public delegate void WorkPerformedHandler(int hours, WorkType workType)
+      Process:
+        Delegate: 
+          public delegate void WorkPerformedHandler(int hours, WorkType workType)
+        Delegate Instance: 
+          WorkPerformedHandler del1 = new WorkPerformedHandler(WorkPerformed1)
+          del1(5, WorkType.Golf)
+        Handler: 
+          public static void WorkPerformed1(int hours, WorkType workType)
+          {
+              //...
+          }
+      Defining an Event:
+        It can be defined in a class using 'event' keyword.
+        Example:
+          public event WorkPerformedHandler WorkPerformed;
+          public event EventHandler WorkCompleted;
+          //WorkPerformedHandler is a delegate here.
+      Raising Events:
+      Creating EventArgs Class:
+    3. Handling Events:
+    4. Lambdas, Action<T> and Func<T, TResult>:
+         Using Action<T>: public delegate void Action<in T>(T obj);
+         Action<int,int> myAddAction = (x,y) => Console.Writeline(x+y);
+         var data = new ProcessData();
+         data.ProcessAction(2,3,myAddAction);
+    5. Events & Delegate in action:
+         
+        
+         
+         
+ //D:\Data\Vatan\Learnings\AA Authors\Vatan\RnD\RnD\RnD\Program.cs
+// public event Action<Task<WellbeingData>> NewDataAvailable;      
